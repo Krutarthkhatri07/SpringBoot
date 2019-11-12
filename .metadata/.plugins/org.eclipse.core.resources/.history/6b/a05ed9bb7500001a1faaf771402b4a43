@@ -1,0 +1,37 @@
+package com.demo.service;
+
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.demo.DAO.stateDAO;
+import com.demo.VO.StateVO;
+
+@Service
+public class StateService {
+
+	@Autowired
+	stateDAO stateDAO;
+	
+	@Transactional
+	public void insert_state_db(StateVO stateVO)
+	{
+		this.stateDAO.insert_state(stateVO);
+	}
+	
+	@Transactional
+	public List search()
+	{
+		 return this.stateDAO.search();
+	}
+	
+	@Transactional
+	public void delete(int id)
+	{
+		
+		this.delete(id);
+	}
+}

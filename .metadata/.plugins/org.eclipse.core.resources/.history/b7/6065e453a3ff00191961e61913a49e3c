@@ -1,0 +1,20 @@
+package com.demo.VO;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.GeneratorType;
+import org.springframework.boot.autoconfigure.web.ResourceProperties.Strategy;
+
+@Entity
+@Table(name="country")
+public class countryVO {
+	
+	@Id
+	@GeneratedValue(Strategy=GenerationType.AUTO)
+	private int id;
+
+}

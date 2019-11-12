@@ -1,0 +1,12 @@
+package com.demo.DAO;
+
+import java.util.List;
+
+import com.demo.VO.CountryVO;
+
+public interface countryDAO {
+
+	public void insert(CountryVO countryVO);
+	
+	public List search();
+}

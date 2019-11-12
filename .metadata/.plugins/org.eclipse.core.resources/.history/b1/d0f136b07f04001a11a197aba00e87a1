@@ -1,0 +1,26 @@
+package com.demo.service;
+
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.demo.DAO.RegDAO;
+
+@Service
+public class RegService {
+
+	@Autowired
+	RegDAO regDAO;
+	
+	@Transactional
+	public List search(String s1)
+	{
+		
+	   List this.regDAO.search(s1);
+	}
+
+	
+}

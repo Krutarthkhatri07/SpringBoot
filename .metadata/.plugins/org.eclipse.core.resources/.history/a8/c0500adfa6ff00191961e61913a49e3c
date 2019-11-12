@@ -1,0 +1,28 @@
+package com.demo.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.demo.VO.CountryVO;
+
+@Controller
+public 	class regcontroller
+{
+	@RequestMapping(value="/insert_country.xx")
+	public ModelAndView insert_country()
+	{
+		return new ModelAndView("insert_country","country",new CountryVO());
+	}
+	
+	@RequestMapping(value="/insert_country_db.xx",method = RequestMethod.POST )
+	public ModelAndView insert_country_db()
+	{
+		
+	}
+
+
+
+
+}

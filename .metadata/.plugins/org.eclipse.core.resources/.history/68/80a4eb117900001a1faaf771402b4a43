@@ -1,0 +1,96 @@
+package com.demo.controller;
+
+import java.lang.ProcessBuilder.Redirect;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.demo.VO.CountryVO;
+import com.demo.VO.StateVO;
+import com.demo.service.CountryService;
+import com.demo.service.StateService;
+
+@Controller
+public 	class regcontroller
+{
+	@Autowired
+	CountryService countryservice;
+	
+	@Autowired
+	StateService stateservice;
+	
+	@RequestMapping(value="/insert_country.xx")
+	public ModelAndView insert_country()
+	{
+		return new ModelAndView("insert_country","country",new CountryVO());
+	}
+	
+	@RequestMapping(value="/insert_country_db.xx",method = RequestMethod.POST )
+	public ModelAndView insert_country_db(@ModelAttribute CountryVO countryVO)
+	{
+		this.countryservice.insert_country_db(countryVO);
+		return new ModelAndView("redirect:insert_country.xx");
+	}
+
+	@RequestMapping(value="/insert_state.xx")
+	public ModelAndView insert_state()
+	{
+		return new ModelAndView("insert_state","state",new StateVO()).addObject("country",this.countryservice.search());
+	}
+	
+	@RequestMapping(value="/insert_state_db.xx",method = RequestMethod.POST )
+	public ModelAndView insert_state_db(@ModelAttribute StateVO stateVO,HttpServletRequest request)
+	{
+		int id=Integer.parseInt(request.getParameter("country"));
+		CountryVO countryVO=new CountryVO();
+		countryVO.setId(id);
+		stateVO.setCountryVO(countryVO);
+		
+		this.stateservice.insert_state_db(stateVO);
+		return new ModelAndView("redirect:insert_country.xx");
+		
+	}
+	
+	@RequestMapping(value="/search_country.xx")
+	public ModelAndView search_country()
+	{
+		return new ModelAndView("view_country","country",this.countryservice.search());
+		
+	}
+	
+	@RequestMapping(value="/search_state.xx")
+	public ModelAndView search_state()
+	{
+		return new ModelAndView("view_state","state", this.stateservice.search());
+	}
+	
+	@RequestMapping(value="/delete_state.xx")
+	public ModelAndView delete_state(HttpServletRequest request)
+	{
+		int id=Integer.parseInt(request.getParameter("id"));
+		this.stateservice.delete(id);
+		return new ModelAndView("redirect:search_state.xx");
+		
+		
+	}
+	
+	@RequestMapping(value="/delete_country.xx")
+	public ModelAndView delete_country(HttpServletRequest request)
+	{
+		int id = Integer.parseInt(request.getParameter("id"));
+		this.countryservice.delete(id);
+		return new ModelAndView("view_country","country",this.countryservice.search());
+		
+	}
+	
+	
+
+
+
+}

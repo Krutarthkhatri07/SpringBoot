@@ -1,0 +1,30 @@
+package com.demo.VO;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.GeneratorType;
+
+
+
+
+@Entity
+@Table(name="State")
+public class StateVO {
+	
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int id;
+	
+	@Column(name="State")
+	private String state;
+	
+	@ManyToOne
+	private CountryVO countryVO;
+}

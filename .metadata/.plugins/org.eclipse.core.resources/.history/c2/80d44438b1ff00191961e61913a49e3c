@@ -1,0 +1,22 @@
+package com.demo.service;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.demo.DAO.stateDAO;
+import com.demo.VO.StateVO;
+
+@Service
+public class StateService {
+
+	@Autowired
+	stateDAO statedao;
+	
+	@Transactional
+	public void insert_state(StateVO stateVO)
+	{
+		this.
+	}
+}

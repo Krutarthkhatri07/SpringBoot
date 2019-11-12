@@ -1,0 +1,19 @@
+package com.demo.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.demo.DAO.countryDAO;
+import com.demo.VO.CountryVO;
+
+@Service
+public class CountryService {
+
+	@Autowired
+	countryDAO countryDAO;
+	
+	public void insert_country(CountryVO countryVO)
+	{
+		this.countryDAO.insert_country(countryVO);
+	}
+}

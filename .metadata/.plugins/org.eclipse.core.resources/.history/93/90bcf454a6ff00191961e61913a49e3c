@@ -1,0 +1,18 @@
+package com.demo.DAO;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.demo.VO.CountryVO;
+
+public class countryDAOimp implements countryDAO{
+
+	@Autowired
+	SessionFactory sessionFactory;
+	public void insert(CountryVO countryVO)
+	{
+		Session session=sessionFactory.getCurrentSession();
+		session.save(countryVO);
+	}
+}

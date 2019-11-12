@@ -1,0 +1,8 @@
+package com.demo.DAO;
+
+import com.demo.VO.CountryVO;
+
+public interface countryDAO {
+
+	public void insert(CountryVO countryVO);
+}

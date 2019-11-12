@@ -1,0 +1,22 @@
+package com.demo.service;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.demo.DAO.countryDAO;
+import com.demo.VO.CountryVO;
+
+@Service
+public class CountryService {
+
+	@Autowired
+	countryDAO countryDAO;
+	
+	@Transactional
+	public void insert_country_db(CountryVO countryVO)
+	{
+		this.countryDAO.insert(countryVO);
+	}
+}

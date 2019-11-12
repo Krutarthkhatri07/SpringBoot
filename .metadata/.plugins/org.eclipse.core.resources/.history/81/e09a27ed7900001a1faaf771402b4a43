@@ -1,0 +1,50 @@
+package com.demo.DAO;
+
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.demo.VO.StateVO;
+
+@Repository
+public class stateDAOimp implements stateDAO {
+ 
+	@Autowired
+	SessionFactory sessionFactory;
+	
+	public void insert_state(StateVO stateVO)
+	{
+		Session session=sessionFactory.getCurrentSession();
+		session.save(stateVO);
+		
+	}
+	
+	public List search()
+	{
+		Session session=sessionFactory.getCurrentSession();
+		 return session.createQuery("from StateVO").list();	
+		
+	}
+	
+	public void delete_state(int id)
+	{
+		StateVO stateVO=new StateVO();
+		stateVO.setId(id);
+		Session session=sessionFactory.getCurrentSession();
+		session.delete(stateVO);
+	}
+	
+	public void delete_state_m(int id)
+	{
+		Session session=sessionFactory.getCurrentSession();
+		List list=session.createQuery("from StateVO where countryVO="+id).list();
+		
+		for(int i=0;i<List.size();i++)
+		{
+			
+		}
+	}
+}

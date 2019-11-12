@@ -1,0 +1,22 @@
+package com.demo.DAO;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.demo.VO.StateVO;
+
+@Repository
+public class stateDAOimp implements stateDAO {
+ 
+	@Autowired
+	SessionFactory sessionFactory;
+	
+	public void insert_state(StateVO stateVO)
+	{
+		Session session=sessionFactory.getCurrentSession();
+		session.save(stateVO);
+		
+	}
+}

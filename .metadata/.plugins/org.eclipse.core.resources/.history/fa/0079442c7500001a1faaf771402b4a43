@@ -1,0 +1,12 @@
+package com.demo.DAO;
+
+import java.util.List;
+
+import com.demo.VO.StateVO;
+
+public interface stateDAO {
+
+	public void insert_state(StateVO stateVO);
+	
+	public List search();
+}
